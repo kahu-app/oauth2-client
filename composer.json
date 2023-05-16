@@ -1,0 +1,34 @@
+{
+  "name": "kahu-app/oauth2-client",
+  "description": "Kahu.app OAuth2 Client",
+  "license": "MIT",
+  "keywords": ["oauth", "oauth2", "client", "authorization", "kahu", "kahu.app"],
+  "autoload": {
+    "psr-4": {
+      "Kahu\\OAuth2\\Client\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Kahu\\OAuth2\\Client\\Test\\": "tests"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "preferred-install": "dist",
+    "allow-plugins": {
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.2",
+    "ext-json": "*",
+    "league/oauth2-client": "^2.0",
+    "psr/http-message": "^2.0"
+  },
+  "require-dev": {
+    "psy/psysh": "^0.11.10"
+  }
+}
