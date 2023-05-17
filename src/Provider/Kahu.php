@@ -14,19 +14,30 @@ class Kahu extends AbstractProvider {
   use BearerAuthorizationTrait;
 
   public string $domain = 'https://sso.kahu.app';
-  public string $apiDomain = 'https://api.kahu.app';
 
   protected function fetchResourceOwnerDetails(AccessToken $token): array {
-    return [];
+    $response = parent::fetchResourceOwnerDetails($token);
+
+    return $response['data'];
   }
 
   protected function getDefaultScopes(): array {
     return [
-      'user.email' // ??
+      'user.name',
+      'user.email'
     ];
   }
 
-  protected function checkResponse(ResponseInterface $response, array $data): void {
+  protected function getScopeSeparator(): string {
+    return ' ';
+  }
+
+  protected function getPkceMethod(): string {
+    return self::PKCE_METHOD_S256;
+  }
+
+  // protected function checkResponse(ResponseInterface $response, array $data): void {
+  protected function checkResponse(ResponseInterface $response, $data) {
     if ($response->getStatusCode() >= 400) {
       throw KahuIdentityProviderException::clientException($response, $data);
     }
@@ -40,15 +51,19 @@ class Kahu extends AbstractProvider {
     return new KahuResourceOwner($response);
   }
 
+  public function setRedirectUri(string $redirectUri): void {
+    $this->redirectUri = $redirectUri;
+  }
+
   public function getBaseAuthorizationUrl(): string {
-    return $this->domain . '/xpto';
+    return $this->domain . '/authorization/check';
   }
 
   public function getBaseAccessTokenUrl(array $params): string {
-    return $this->domain . '/something';
+    return $this->domain . '/authorization/token';
   }
 
   public function getResourceOwnerDetailsUrl(AccessToken $token): string {
-    return $this->domain . '/v1/user';
+    return $this->domain . '/profile';
   }
 }
