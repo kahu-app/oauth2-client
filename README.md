@@ -7,7 +7,7 @@ This package provides Kahu OAuth 2.0 support for the PHP League's [OAuth 2.0 Cli
 To install, use composer:
 
 ```bash
-composer require kahu-app/oauth2-client
+composer require kahu/oauth2-client
 ```
 
 ## Usage

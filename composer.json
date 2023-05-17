@@ -1,5 +1,5 @@
 {
-  "name": "kahu-app/oauth2-client",
+  "name": "kahu/oauth2-client",
   "description": "Kahu.app OAuth2 Client",
   "license": "MIT",
   "keywords": ["oauth", "oauth2", "client", "authorization", "kahu", "kahu.app"],
