@@ -39,6 +39,10 @@ class Kahu extends AbstractProvider {
   // protected function checkResponse(ResponseInterface $response, array $data): void {
   protected function checkResponse(ResponseInterface $response, $data) {
     if ($response->getStatusCode() >= 400) {
+      if (is_string($data)) {
+        throw KahuIdentityProviderException::clientException($response, []);
+      }
+
       throw KahuIdentityProviderException::clientException($response, $data);
     }
 
