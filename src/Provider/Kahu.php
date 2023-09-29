@@ -24,8 +24,10 @@ class Kahu extends AbstractProvider {
 
   protected function getDefaultScopes(): array {
     return [
+      'user.avatar',
       'user.name',
-      'user.email'
+      'user.email',
+      'user.provider'
     ];
   }
 
