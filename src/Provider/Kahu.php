@@ -13,6 +13,7 @@ use Psr\Http\Message\ResponseInterface;
 class Kahu extends AbstractProvider {
   use BearerAuthorizationTrait;
 
+  public string $apiDomain = 'https://api.kahu.app';
   public string $domain = 'https://sso.kahu.app';
 
   protected function fetchResourceOwnerDetails(AccessToken $token): array {
